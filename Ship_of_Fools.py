@@ -100,7 +100,8 @@ class ShipOfFoolsGame:
                 has_crew = True
             
             if has_captain and has_crew and has_ship:
-                '''Now we got all needed dice, and can bank the dices with value greater than 3 or else roll the unbanked dices'''
+                '''Now we got all needed dice, and can bank the dices 
+                with value greater than 3 or else roll the unbanked dices'''
                 if chance<2:
                     for check in range(5):
                         if self._cup._dices[check][1].get_value() > 3 and not self._cup.is_banked(check):
@@ -114,6 +115,7 @@ class ShipOfFoolsGame:
                             self._cup.bank(check)
                             '''If we have a ship, captain and crew (sum 15), 
                                calculate the sum of the two remaining'''
+                            
         if has_captain and has_crew and has_ship:
             for sum in range(5):
                 cargo_score = cargo_score+self._cup._dices[sum][1].get_value()
@@ -125,7 +127,9 @@ class ShipOfFoolsGame:
         return cargo_score
 
 class Player:
-    '''player class manages the individual player and manages the score of the  individual player and stores the score in the ._player_score attribute'''
+    '''player class manages the individual player and manages the score of the  
+    individual player and stores the score in the ._player_score attribute'''
+    
     def __init__(self, name_of_player : str) -> None:
         self._player_name = self.set_name(name_of_player)
         self._player_score = 0
@@ -148,6 +152,7 @@ class Player:
     
 class PlayRoom:
     '''Playroom class manages to handle the players and checks the score and displays the winner'''
+    
     def __init__(self) -> None:
         self._game = ShipOfFoolsGame()
         self._players = []
@@ -200,6 +205,7 @@ if __name__ == "__main__":
     room.add_player(Player("Sri")) #adding player 2
     room.reset_scores()
     round_count = 1
+    
     while not room.game_finished():
         print("\n***********_Round",round_count,"Begins")
         room.play_round()
@@ -207,6 +213,7 @@ if __name__ == "__main__":
         room.print_scores()
         print("___________________________")
         round_count = round_count + 1
+        
     room.print_winner()
     print("-----------------------------------")
     print(" Congrats, the game is finished :)")
